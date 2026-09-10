@@ -18,7 +18,7 @@ function App() {
     fetch("/data/technologies.json")
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error("Failed to load technologies");
         }
 
         return response.json();
@@ -27,8 +27,8 @@ function App() {
         setTechnologies(data);
         setLoading(false);
       })
-      .catch((err) => {
-        setError(err.message);
+      .catch(() => {
+        setError("Unable to load technologies. Please try again.");
         setLoading(false);
       });
   }, []);
@@ -39,30 +39,47 @@ function App() {
     );
 
     if (alreadyAdded) {
-      toast.warning(`${technology.name} is already in your stack!`);
+      toast.warning(
+        `${technology.name} is already in your stack!`
+      );
       return;
     }
 
     setStack([...stack, technology]);
-    toast.success(`${technology.name} added to your stack!`);
+
+    toast.success(
+      `${technology.name} added to your stack!`
+    );
   };
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <h2 className="text-2xl font-semibold text-gray-600">
+      <div className="min-h-screen flex flex-col justify-center items-center px-6">
+        <div className="text-4xl mb-4">⚙️</div>
+
+        <h2 className="text-2xl font-semibold text-gray-700">
           Loading technologies...
         </h2>
+
+        <p className="text-gray-500 mt-2">
+          Please wait while we load the technology list.
+        </p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="min-h-screen flex flex-col justify-center items-center px-6 text-center">
+        <div className="text-4xl mb-4">⚠️</div>
+
         <h2 className="text-2xl font-semibold text-red-500">
-          Error: {error}
+          Something went wrong
         </h2>
+
+        <p className="text-gray-500 mt-2">
+          {error}
+        </p>
       </div>
     );
   }
@@ -83,7 +100,6 @@ function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-          {/* Technology Cards */}
           <div className="lg:col-span-3">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {technologies.map((technology) => (
@@ -99,7 +115,6 @@ function App() {
             </div>
           </div>
 
-          {/* Stack Sidebar */}
           <StackSidebar
             stack={stack}
             setStack={setStack}
@@ -110,7 +125,14 @@ function App() {
 
       <Footer />
 
-      <ToastContainer position="top-right" />
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+      />
     </>
   );
 }
