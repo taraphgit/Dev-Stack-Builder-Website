@@ -39,22 +39,18 @@ function App() {
     );
 
     if (alreadyAdded) {
-      toast.warning(
-        `${technology.name} is already in your stack!`
-      );
+      toast.warning(`${technology.name} is already in your stack!`);
       return;
     }
 
     setStack([...stack, technology]);
 
-    toast.success(
-      `${technology.name} added to your stack!`
-    );
+    toast.success(`${technology.name} added to your stack!`);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center px-6">
+      <div className="min-h-screen flex flex-col justify-center items-center px-4 text-center">
         <div className="text-4xl mb-4">⚙️</div>
 
         <h2 className="text-2xl font-semibold text-gray-700">
@@ -70,7 +66,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center px-6 text-center">
+      <div className="min-h-screen flex flex-col justify-center items-center px-4 text-center">
         <div className="text-4xl mb-4">⚠️</div>
 
         <h2 className="text-2xl font-semibold text-red-500">
@@ -92,16 +88,21 @@ function App() {
 
       <main
         id="technologies"
-        className="max-w-7xl mx-auto px-4 md:px-6 py-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14"
       >
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">
-          Explore Technologies
-        </h2>
+        <div className="mb-8">
+          <p className="text-orange-500 font-semibold mb-2">
+            EXPLORE YOUR OPTIONS
+          </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            Explore Technologies
+          </h2>
+        </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
           <div className="lg:col-span-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {technologies.map((technology) => (
                 <TechnologyCard
                   key={technology.id}
@@ -119,7 +120,6 @@ function App() {
             stack={stack}
             setStack={setStack}
           />
-
         </div>
       </main>
 
@@ -128,7 +128,6 @@ function App() {
       <ToastContainer
         position="top-right"
         autoClose={2500}
-        hideProgressBar={false}
         newestOnTop
         closeOnClick
         pauseOnHover
