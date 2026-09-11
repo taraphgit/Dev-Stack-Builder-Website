@@ -1,11 +1,13 @@
+import heroImage from "../assets/hero2.png";
+
 function Hero() {
   return (
     <section
       id="home"
-      className="py-16 md:py-24"
+      className="py-12 md:py-20"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Hero Content */}
           <div>
@@ -13,14 +15,14 @@ function Hero() {
               BUILD YOUR PERFECT STACK
             </p>
 
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
               Build Your
               <span className="block bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 bg-clip-text text-transparent">
                 Dev Stack
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-gray-600 max-w-xl leading-relaxed">
+            <p className="mt-6 text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
               Explore modern development technologies and build your
               personalized tech stack. Choose the tools that match your
               learning goals and project needs.
@@ -30,14 +32,14 @@ function Hero() {
             <div className="flex flex-wrap gap-4 mt-8">
               <a
                 href="#technologies"
-                className="px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white font-semibold"
+                className="px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white font-semibold hover:opacity-90 transition"
               >
                 Explore Technologies
               </a>
 
               <a
                 href="#about"
-                className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold"
+                className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition"
               >
                 Learn More
               </a>
@@ -46,35 +48,11 @@ function Hero() {
 
           {/* Hero Image */}
           <div className="flex justify-center">
-            <div className="w-full max-w-lg rounded-3xl bg-gradient-to-br from-orange-100 via-pink-100 to-violet-100 p-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="h-20 rounded-xl bg-orange-100 flex items-center justify-center text-3xl">
-                    ⚛️
-                  </div>
-
-                  <div className="h-20 rounded-xl bg-pink-100 flex items-center justify-center text-3xl">
-                    🟢
-                  </div>
-
-                  <div className="h-20 rounded-xl bg-violet-100 flex items-center justify-center text-3xl">
-                    🐳
-                  </div>
-
-                  <div className="h-20 rounded-xl bg-blue-100 flex items-center justify-center text-3xl">
-                    JS
-                  </div>
-
-                  <div className="h-20 rounded-xl bg-green-100 flex items-center justify-center text-3xl">
-                    DB
-                  </div>
-
-                  <div className="h-20 rounded-xl bg-yellow-100 flex items-center justify-center text-3xl">
-                    Git
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              src={heroImage}
+              alt="Developer technology stack illustration"
+              className="w-full max-w-xl h-auto rounded-3xl object-cover"
+            />
           </div>
 
         </div>
