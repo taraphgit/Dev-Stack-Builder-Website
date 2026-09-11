@@ -15,7 +15,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/data/technologies.json")
+    fetch(`${import.meta.env.BASE_URL}data/technologies.json`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to load technologies");
@@ -27,7 +27,8 @@ function App() {
         setTechnologies(data);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error);
         setError("Unable to load technologies. Please try again.");
         setLoading(false);
       });
@@ -44,7 +45,6 @@ function App() {
     }
 
     setStack([...stack, technology]);
-
     toast.success(`${technology.name} added to your stack!`);
   };
 
